@@ -1,7 +1,8 @@
-import Button from "@/components/atoms/Button";
-import StatusBadge from "@/components/molecules/StatusBadge";
-import ApperIcon from "@/components/ApperIcon";
 import { format } from "date-fns";
+import React from "react";
+import ApperIcon from "@/components/ApperIcon";
+import StatusBadge from "@/components/molecules/StatusBadge";
+import Button from "@/components/atoms/Button";
 
 const CompanyRow = ({ company, onEdit, onDelete }) => {
   const formatRevenue = (revenue) => {
@@ -33,17 +34,17 @@ const CompanyRow = ({ company, onEdit, onDelete }) => {
               {company.Name}
             </div>
             <div className="text-sm text-gray-500">
-{formatEmployeeCount(company.EmployeeCount)} employees
+{company.company_name_c || "No company name"}
             </div>
           </div>
         </div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
-<div className="text-sm text-primary">{company.Industry || "N/A"}</div>
+<div className="text-sm text-primary">{company.Tags || "No tags"}</div>
       </td>
-      <td className="px-6 py-4 whitespace-nowrap">
+<td className="px-6 py-4 whitespace-nowrap">
         <div className="text-sm text-primary">
-{company.Phone && (
+          {company.Phone && (
             <div className="flex items-center gap-1 mb-1">
               <ApperIcon name="Phone" size={14} className="text-gray-400" />
               {company.Phone}
@@ -51,11 +52,11 @@ const CompanyRow = ({ company, onEdit, onDelete }) => {
           )}
           {company.Email && (
             <div className="flex items-center gap-1 mb-1">
-              <ApperIcon name="Mail" size={14} className="text-gray-400" />
+              <ApperIcon name="MapPin" size={14} className="text-gray-400" />
               {company.Email}
             </div>
           )}
-{company.Website && (
+          {company.Website && (
             <div className="flex items-center gap-1">
               <ApperIcon name="Globe" size={14} className="text-gray-400" />
               <a 
@@ -72,18 +73,18 @@ const CompanyRow = ({ company, onEdit, onDelete }) => {
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
         <div className="text-sm text-primary">
-{company.City && company.State ? (
-            `${company.City}, ${company.State}`
+{company.city_c && company.state_c ? (
+            `${company.city_c}, ${company.state_c}`
           ) : (
-            company.City || company.State || "N/A"
+            company.city_c || company.state_c || "N/A"
           )}
         </div>
         <div className="text-sm text-gray-500">
-          {formatRevenue(company.AnnualRevenue)} revenue
+{company.zip_code_c || "No zip code"}
         </div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
-<StatusBadge status={company.Status} />
+<div className="text-xs text-gray-500">Active</div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
         <div className="flex items-center gap-2">

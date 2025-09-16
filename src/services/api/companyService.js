@@ -16,20 +16,14 @@ class CompanyService {
       const params = {
 fields: [
           {"field": {"Name": "Name"}},
-          {"field": {"Name": "Industry"}},
-          {"field": {"Name": "Website"}},
-          {"field": {"Name": "Phone"}},
-          {"field": {"Name": "Email"}},
-          {"field": {"Name": "Address"}},
-          {"field": {"Name": "City"}},
-          {"field": {"Name": "State"}},
-          {"field": {"Name": "ZipCode"}},
-          {"field": {"Name": "Country"}},
-          {"field": {"Name": "EmployeeCount"}},
-          {"field": {"Name": "AnnualRevenue"}},
-          {"field": {"Name": "Status"}},
-          {"field": {"Name": "CreatedDate"}},
-          {"field": {"Name": "Tags"}}
+          {"field": {"Name": "Tags"}},
+          {"field": {"Name": "company_name_c"}},
+          {"field": {"Name": "address_c"}},
+          {"field": {"Name": "city_c"}},
+          {"field": {"Name": "state_c"}},
+          {"field": {"Name": "zip_code_c"}},
+          {"field": {"Name": "CreatedOn"}},
+          {"field": {"Name": "Owner"}}
         ],
         orderBy: [{"fieldName": "CreatedDate", "sorttype": "DESC"}],
         pagingInfo: {"limit": 100, "offset": 0}
@@ -55,20 +49,14 @@ fields: [
       const params = {
         fields: [
 {"field": {"Name": "Name"}},
-          {"field": {"Name": "Industry"}},
-          {"field": {"Name": "Website"}},
-          {"field": {"Name": "Phone"}},
-          {"field": {"Name": "Email"}},
-          {"field": {"Name": "Address"}},
-          {"field": {"Name": "City"}},
-          {"field": {"Name": "State"}},
-          {"field": {"Name": "ZipCode"}},
-          {"field": {"Name": "Country"}},
-          {"field": {"Name": "EmployeeCount"}},
-          {"field": {"Name": "AnnualRevenue"}},
-          {"field": {"Name": "Status"}},
-          {"field": {"Name": "CreatedDate"}},
-          {"field": {"Name": "Tags"}}
+          {"field": {"Name": "Tags"}},
+          {"field": {"Name": "company_name_c"}},
+          {"field": {"Name": "address_c"}},
+          {"field": {"Name": "city_c"}},
+          {"field": {"Name": "state_c"}},
+          {"field": {"Name": "zip_code_c"}},
+          {"field": {"Name": "CreatedOn"}},
+          {"field": {"Name": "Owner"}}
         ]
       };
       
@@ -91,20 +79,12 @@ fields: [
         records: [
           {
 Name: companyData.Name,
-            Industry: companyData.Industry,
-            Website: companyData.Website,
-            Phone: companyData.Phone,
-            Email: companyData.Email,
-            Address: companyData.Address,
-            City: companyData.City,
-            State: companyData.State,
-            ZipCode: companyData.ZipCode,
-            Country: companyData.Country,
-            EmployeeCount: parseInt(companyData.EmployeeCount) || 0,
-            AnnualRevenue: parseFloat(companyData.AnnualRevenue) || 0,
-            Status: companyData.Status,
             Tags: companyData.Tags || "",
-            CreatedDate: new Date().toISOString()
+            company_name_c: companyData.company_name_c || "",
+            address_c: companyData.address_c || "",
+            city_c: companyData.city_c || "",
+            state_c: companyData.state_c || "",
+            zip_code_c: companyData.zip_code_c || ""
           }
         ]
       };
@@ -143,19 +123,12 @@ Name: companyData.Name,
           {
             Id: id,
             Name: companyData.Name,
-Industry: companyData.Industry,
-            Website: companyData.Website,
-            Phone: companyData.Phone,
-            Email: companyData.Email,
-            Address: companyData.Address,
-            City: companyData.City,
-            State: companyData.State,
-            ZipCode: companyData.ZipCode,
-            Country: companyData.Country,
-            EmployeeCount: parseInt(companyData.EmployeeCount) || 0,
-            AnnualRevenue: parseFloat(companyData.AnnualRevenue) || 0,
-            Status: companyData.Status,
-            Tags: companyData.Tags || ""
+Tags: companyData.Tags || "",
+            company_name_c: companyData.company_name_c || "",
+            address_c: companyData.address_c || "",
+            city_c: companyData.city_c || "",
+            state_c: companyData.state_c || "",
+            zip_code_c: companyData.zip_code_c || ""
           }
         ]
       };

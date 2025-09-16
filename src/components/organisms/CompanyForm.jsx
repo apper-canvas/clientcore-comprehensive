@@ -6,19 +6,12 @@ import ApperIcon from "@/components/ApperIcon";
 
 const CompanyForm = ({ company, onSubmit, onCancel, isSubmitting = false }) => {
 const [formData, setFormData] = useState({
-    Name: "",
-    Industry: "",
-    Website: "",
-    Phone: "",
-    Email: "",
-    Address: "",
-    City: "",
-    State: "",
-    ZipCode: "",
-    Country: "",
-    EmployeeCount: "",
-    AnnualRevenue: "",
-    Status: "Active",
+Name: "",
+    company_name_c: "",
+    address_c: "",
+    city_c: "",
+    state_c: "",
+    zip_code_c: "",
     Tags: ""
   });
 
@@ -27,19 +20,12 @@ const [formData, setFormData] = useState({
   useEffect(() => {
     if (company) {
 setFormData({
-        Name: company.Name || "",
-        Industry: company.Industry || "",
-        Website: company.Website || "",
-        Phone: company.Phone || "",
-        Email: company.Email || "",
-        Address: company.Address || "",
-        City: company.City || "",
-        State: company.State || "",
-        ZipCode: company.ZipCode || "",
-        Country: company.Country || "",
-        EmployeeCount: company.EmployeeCount || "",
-        AnnualRevenue: company.AnnualRevenue || "",
-        Status: company.Status || "Active",
+Name: company.Name || "",
+        company_name_c: company.company_name_c || "",
+        address_c: company.address_c || "",
+        city_c: company.city_c || "",
+        state_c: company.state_c || "",
+        zip_code_c: company.zip_code_c || "",
         Tags: company.Tags || ""
       });
     }
@@ -52,8 +38,8 @@ setFormData({
       newErrors.Name = "Company name is required";
     }
     
-if (!formData.Industry.trim()) {
-      newErrors.Industry = "Industry is required";
+if (!formData.company_name_c.trim()) {
+      newErrors.company_name_c = "Company Name is required";
     }
     
     if (formData.Email && !/\S+@\S+\.\S+/.test(formData.Email)) {
@@ -124,18 +110,18 @@ if (!formData.Industry.trim()) {
             </div>
 
 <div>
-              <label className="block text-sm font-medium text-primary mb-2">
-                Industry *
+<label className="block text-sm font-medium text-primary mb-2">
+                Company Name *
               </label>
               <Input
-                name="Industry"
-                value={formData.Industry}
+                name="company_name_c"
+                value={formData.company_name_c}
                 onChange={handleChange}
-                error={errors.Industry}
-                placeholder="e.g., Technology, Healthcare"
+                error={errors.company_name_c}
+                placeholder="Enter company name"
               />
-              {errors.Industry && (
-                <p className="text-error text-sm mt-1">{errors.Industry}</p>
+              {errors.company_name_c && (
+                <p className="text-error text-sm mt-1">{errors.company_name_c}</p>
               )}
             </div>
           </div>
@@ -146,8 +132,8 @@ if (!formData.Industry.trim()) {
                 Website
               </label>
               <Input
-                name="Website"
-                value={formData.Website}
+name="Tags"
+                value={formData.Tags}
                 onChange={handleChange}
                 error={errors.Website}
                 placeholder="https://company.com"
@@ -162,8 +148,8 @@ if (!formData.Industry.trim()) {
                 Status
               </label>
               <select
-                name="Status"
-                value={formData.Status}
+name="Tags"
+                value={formData.Tags}
                 onChange={handleChange}
                 className="w-full px-4 py-3 rounded-md border-2 border-gray-200 bg-surface text-primary focus:border-accent focus:outline-none transition-colors duration-200"
               >
@@ -186,8 +172,8 @@ if (!formData.Industry.trim()) {
                 Phone
               </label>
               <Input
-                name="Phone"
-                value={formData.Phone}
+name="address_c"
+                value={formData.address_c}
                 onChange={handleChange}
                 placeholder="Enter phone number"
               />
@@ -199,8 +185,8 @@ if (!formData.Industry.trim()) {
               </label>
               <Input
                 name="Email"
-                type="email"
-                value={formData.Email}
+name="city_c"
+                value={formData.city_c}
                 onChange={handleChange}
                 error={errors.Email}
                 placeholder="contact@company.com"
@@ -270,8 +256,8 @@ if (!formData.Industry.trim()) {
                 Country
               </label>
               <Input
-                name="Country"
-                value={formData.Country}
+name="state_c"
+                value={formData.state_c}
                 onChange={handleChange}
                 placeholder="Enter country"
               />
@@ -289,8 +275,8 @@ if (!formData.Industry.trim()) {
                 Employee Count
               </label>
               <Input
-                name="EmployeeCount"
-                type="number"
+name="zip_code_c"
+                value={formData.zip_code_c}
                 value={formData.EmployeeCount}
                 onChange={handleChange}
                 placeholder="Number of employees"
@@ -302,8 +288,8 @@ if (!formData.Industry.trim()) {
                 Annual Revenue
               </label>
               <Input
-                name="AnnualRevenue"
-                type="number"
+name="Tags"
+                value={formData.Tags}
                 value={formData.AnnualRevenue}
                 onChange={handleChange}
                 placeholder="Annual revenue in USD"
