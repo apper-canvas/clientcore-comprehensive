@@ -22,7 +22,8 @@ class ContactService {
           {"field": {"Name": "phone_c"}},
           {"field": {"Name": "company_c"}},
           {"field": {"Name": "status_c"}},
-          {"field": {"Name": "tags_c"}},
+{"field": {"Name": "tags_c"}},
+          {"field": {"Name": "address_c"}},
           {"field": {"Name": "created_at_c"}},
           {"field": {"Name": "last_activity_c"}}
         ],
@@ -57,6 +58,7 @@ class ContactService {
           {"field": {"Name": "company_c"}},
           {"field": {"Name": "status_c"}},
           {"field": {"Name": "tags_c"}},
+{"field": {"Name": "address_c"}},
           {"field": {"Name": "created_at_c"}},
           {"field": {"Name": "last_activity_c"}}
         ]
@@ -84,8 +86,9 @@ class ContactService {
             first_name_c: contactData.first_name_c,
             last_name_c: contactData.last_name_c,
             email_c: contactData.email_c,
-            phone_c: contactData.phone_c,
+phone_c: contactData.phone_c,
             company_c: contactData.company_c,
+            address_c: contactData.address_c,
             status_c: contactData.status_c,
             tags_c: contactData.tags_c || "",
             created_at_c: new Date().toISOString(),
@@ -132,7 +135,8 @@ class ContactService {
             last_name_c: contactData.last_name_c,
             email_c: contactData.email_c,
             phone_c: contactData.phone_c,
-            company_c: contactData.company_c,
+company_c: contactData.company_c,
+            address_c: contactData.address_c,
             status_c: contactData.status_c,
             tags_c: contactData.tags_c || "",
             last_activity_c: new Date().toISOString()

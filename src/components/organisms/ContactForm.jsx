@@ -5,12 +5,13 @@ import Card from "@/components/atoms/Card";
 import ApperIcon from "@/components/ApperIcon";
 
 const ContactForm = ({ contact, onSubmit, onCancel, isSubmitting = false }) => {
-  const [formData, setFormData] = useState({
+const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
     phone: "",
     company: "",
+    address: "",
     status: "Lead"
   });
 
@@ -24,6 +25,7 @@ first_name_c: contact.first_name_c || "",
         email_c: contact.email_c || "",
         phone_c: contact.phone_c || "",
         company_c: contact.company_c || "",
+        address_c: contact.address_c || "",
         status_c: contact.status_c || "Lead"
       });
     }
@@ -52,8 +54,11 @@ first_name_c: contact.first_name_c || "",
     
     if (!formData.company.trim()) {
       newErrors.company = "Company is required";
+}
+    
+    if (!formData.address.trim()) {
+      newErrors.address = "Address is required";
     }
-
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -173,8 +178,23 @@ first_name_c: contact.first_name_c || "",
           {errors.company && (
             <p className="text-error text-sm mt-1">{errors.company}</p>
           )}
-        </div>
+</div>
 
+        <div>
+          <label className="block text-sm font-medium text-primary mb-2">
+            Address
+          </label>
+          <Input
+            name="address"
+            value={formData.address}
+            onChange={handleChange}
+            error={errors.address}
+            placeholder="Enter address"
+          />
+          {errors.address && (
+            <p className="text-error text-sm mt-1">{errors.address}</p>
+          )}
+        </div>
         <div>
           <label className="block text-sm font-medium text-primary mb-2">
             Status
