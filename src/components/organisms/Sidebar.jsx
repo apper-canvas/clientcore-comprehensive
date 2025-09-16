@@ -6,9 +6,10 @@ import { AuthContext } from "@/App";
 const Sidebar = ({ isOpen, onClose }) => {
 const { logout } = useContext(AuthContext);
 
-  const navigation = [
+const navigation = [
     { name: "Dashboard", href: "/", icon: "BarChart3" },
     { name: "Contacts", href: "/contacts", icon: "Users" },
+    { name: "Companies", href: "/companies", icon: "Building2" },
     { name: "Deals", href: "/deals", icon: "DollarSign" },
     { name: "Activities", href: "/activities", icon: "Activity" },
   ];
