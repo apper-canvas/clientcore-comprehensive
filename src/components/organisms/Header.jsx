@@ -1,9 +1,15 @@
-import { useState } from "react";
-import Button from "@/components/atoms/Button";
-import SearchBar from "@/components/molecules/SearchBar";
+import React, { useContext, useState } from "react";
 import ApperIcon from "@/components/ApperIcon";
+import SearchBar from "@/components/molecules/SearchBar";
+import Button from "@/components/atoms/Button";
+import { AuthContext } from "@/contexts/AuthContext";
 
 const Header = ({ onMenuClick, title, subtitle, actions = [] }) => {
+  const { logout } = useContext(AuthContext);
+
+  const handleLogout = async () => {
+    await logout();
+  };
   const [searchValue, setSearchValue] = useState("");
 
   return (
@@ -51,6 +57,17 @@ const Header = ({ onMenuClick, title, subtitle, actions = [] }) => {
               </Button>
             ))}
           </div>
+</div>
+        <div className="flex items-center gap-3">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={handleLogout}
+            className="text-gray-600 hover:text-gray-800"
+          >
+            <ApperIcon name="LogOut" size={16} className="mr-2" />
+            Logout
+          </Button>
         </div>
       </div>
     </div>

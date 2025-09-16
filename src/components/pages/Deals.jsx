@@ -1,17 +1,17 @@
-import { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
-import Header from "@/components/organisms/Header";
-import DealForm from "@/components/organisms/DealForm";
-import DealCard from "@/components/molecules/DealCard";
-import Card from "@/components/atoms/Card";
-import Button from "@/components/atoms/Button";
-import Loading from "@/components/ui/Loading";
-import Error from "@/components/ui/Error";
-import Empty from "@/components/ui/Empty";
-import ApperIcon from "@/components/ApperIcon";
 import { dealService } from "@/services/api/dealService";
 import { contactService } from "@/services/api/contactService";
 import { toast } from "react-toastify";
+import ApperIcon from "@/components/ApperIcon";
+import Header from "@/components/organisms/Header";
+import DealForm from "@/components/organisms/DealForm";
+import DealCard from "@/components/molecules/DealCard";
+import Button from "@/components/atoms/Button";
+import Card from "@/components/atoms/Card";
+import Empty from "@/components/ui/Empty";
+import Loading from "@/components/ui/Loading";
+import Error from "@/components/ui/Error";
 
 const Deals = () => {
   const { onMenuClick } = useOutletContext();
@@ -104,25 +104,25 @@ const Deals = () => {
     setEditingDeal(null);
   };
 
-  const getDealsByStage = (stage) => {
-    return deals.filter(deal => deal.stage === stage);
+const getDealsByStage = (stage) => {
+    return deals.filter(deal => deal.stage_c === stage);
   };
 
   const getContactById = (id) => {
     return contacts.find(contact => contact.Id === id);
   };
 
-  const formatCurrency = (amount) => {
+const formatCurrency = (amount) => {
     return new Intl.NumberFormat("en-US", {
       style: "currency",
       currency: "USD",
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
-    }).format(amount);
+    }).format(amount || 0);
   };
 
   const calculateStageValue = (stage) => {
-    return getDealsByStage(stage).reduce((sum, deal) => sum + deal.value, 0);
+    return getDealsByStage(stage).reduce((sum, deal) => sum + (deal.value_c || 0), 0);
   };
 
   if (loading) return <Loading type="kanban" />;
@@ -196,9 +196,9 @@ const Deals = () => {
                               <p className="text-sm">No deals</p>
                             </div>
                           </div>
-                        ) : (
+) : (
                           stageDeals.map(deal => {
-                            const contact = getContactById(deal.contactId);
+                            const contact = getContactById(deal.contact_id_c?.Id);
                             return (
                               <DealCard
                                 key={deal.Id}
@@ -228,15 +228,15 @@ const Deals = () => {
                     </div>
                     <div className="text-sm text-gray-600">Total Deals</div>
                   </div>
-                  <div className="text-center">
+<div className="text-center">
                     <div className="text-2xl font-bold bg-gradient-to-r from-success to-success/80 bg-clip-text text-transparent mb-1">
-                      {formatCurrency(deals.reduce((sum, deal) => sum + deal.value, 0))}
+                      {formatCurrency(deals.reduce((sum, deal) => sum + (deal.value_c || 0), 0))}
                     </div>
                     <div className="text-sm text-gray-600">Total Value</div>
                   </div>
                   <div className="text-center">
                     <div className="text-2xl font-bold bg-gradient-to-r from-info to-info/80 bg-clip-text text-transparent mb-1">
-                      {Math.round(deals.reduce((sum, deal) => sum + deal.probability, 0) / deals.length)}%
+                      {Math.round(deals.reduce((sum, deal) => sum + (deal.probability_c || 0), 0) / deals.length)}%
                     </div>
                     <div className="text-sm text-gray-600">Avg Probability</div>
                   </div>

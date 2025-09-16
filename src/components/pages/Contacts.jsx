@@ -1,18 +1,17 @@
-import { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
-import Header from "@/components/organisms/Header";
-import ContactForm from "@/components/organisms/ContactForm";
-import ContactRow from "@/components/molecules/ContactRow";
-import SearchBar from "@/components/molecules/SearchBar";
-import Card from "@/components/atoms/Card";
-import Button from "@/components/atoms/Button";
-import Loading from "@/components/ui/Loading";
-import Error from "@/components/ui/Error";
-import Empty from "@/components/ui/Empty";
-import ApperIcon from "@/components/ApperIcon";
 import { contactService } from "@/services/api/contactService";
 import { toast } from "react-toastify";
-
+import ApperIcon from "@/components/ApperIcon";
+import Header from "@/components/organisms/Header";
+import ContactForm from "@/components/organisms/ContactForm";
+import SearchBar from "@/components/molecules/SearchBar";
+import ContactRow from "@/components/molecules/ContactRow";
+import Button from "@/components/atoms/Button";
+import Card from "@/components/atoms/Card";
+import Empty from "@/components/ui/Empty";
+import Loading from "@/components/ui/Loading";
+import Error from "@/components/ui/Error";
 const Contacts = () => {
   const { onMenuClick } = useOutletContext();
   
@@ -50,19 +49,18 @@ const Contacts = () => {
 
   const filterContacts = () => {
     let filtered = contacts;
-
-    if (searchTerm) {
+if (searchTerm) {
       const term = searchTerm.toLowerCase();
       filtered = filtered.filter(contact =>
-        contact.firstName?.toLowerCase().includes(term) ||
-        contact.lastName?.toLowerCase().includes(term) ||
-        contact.email?.toLowerCase().includes(term) ||
-        contact.company?.toLowerCase().includes(term)
+        contact.first_name_c?.toLowerCase().includes(term) ||
+        contact.last_name_c?.toLowerCase().includes(term) ||
+        contact.email_c?.toLowerCase().includes(term) ||
+        contact.company_c?.toLowerCase().includes(term)
       );
     }
 
     if (statusFilter !== "All") {
-      filtered = filtered.filter(contact => contact.status === statusFilter);
+      filtered = filtered.filter(contact => contact.status_c === statusFilter);
     }
 
     setFilteredContacts(filtered);

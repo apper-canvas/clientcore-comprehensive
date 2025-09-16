@@ -1,13 +1,21 @@
 import { NavLink } from "react-router-dom";
+import React, { useContext } from "react";
 import ApperIcon from "@/components/ApperIcon";
+import { AuthContext } from "@/contexts/AuthContext";
 
 const Sidebar = ({ isOpen, onClose }) => {
+const { logout } = useContext(AuthContext);
+
   const navigation = [
     { name: "Dashboard", href: "/", icon: "BarChart3" },
     { name: "Contacts", href: "/contacts", icon: "Users" },
     { name: "Deals", href: "/deals", icon: "DollarSign" },
     { name: "Activities", href: "/activities", icon: "Activity" },
   ];
+
+  const handleLogout = async () => {
+    await logout();
+  };
 
   const NavItem = ({ item }) => (
     <NavLink

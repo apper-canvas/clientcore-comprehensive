@@ -19,7 +19,7 @@ const DealCard = ({ deal, contact, onEdit, onDelete, draggable = true }) => {
       draggable={draggable}
     >
       <div className="flex justify-between items-start mb-3">
-        <h4 className="font-semibold text-primary text-sm">{deal.title}</h4>
+<h4 className="font-semibold text-primary text-sm">{deal.title_c}</h4>
         <div className="flex gap-1">
           <Button
             variant="ghost"
@@ -43,7 +43,7 @@ const DealCard = ({ deal, contact, onEdit, onDelete, draggable = true }) => {
       <div className="space-y-2">
         <div className="flex items-center justify-between">
           <span className="text-lg font-bold bg-gradient-to-r from-accent to-accent/80 bg-clip-text text-transparent">
-            {formatCurrency(deal.value)}
+{formatCurrency(deal.value_c)}
           </span>
           <Badge variant="info">{deal.probability}%</Badge>
         </div>
@@ -51,16 +51,20 @@ const DealCard = ({ deal, contact, onEdit, onDelete, draggable = true }) => {
         {contact && (
           <div className="flex items-center text-sm text-gray-600">
             <ApperIcon name="User" size={14} className="mr-2" />
-            {contact.firstName} {contact.lastName}
+{contact.first_name_c} {contact.last_name_c}
           </div>
         )}
         
         <div className="flex items-center text-sm text-gray-600">
-          <ApperIcon name="Calendar" size={14} className="mr-2" />
-          {format(new Date(deal.expectedCloseDate), "MMM dd, yyyy")}
+<ApperIcon name="Calendar" size={14} className="mr-2" />
+          {format(new Date(deal.expected_close_date_c), "MMM dd, yyyy")}
         </div>
         
-        {deal.notes && (
+{deal.notes_c && (
+          <div className="text-xs text-gray-600 bg-gray-50 p-2 rounded mt-2">
+            {deal.notes_c}
+          </div>
+        )}
           <p className="text-sm text-gray-600 line-clamp-2">{deal.notes}</p>
         )}
       </div>

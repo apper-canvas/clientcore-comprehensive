@@ -65,24 +65,24 @@ const Activities = () => {
     if (searchTerm) {
       const term = searchTerm.toLowerCase();
       filtered = filtered.filter(activity => {
-        const contact = getContactById(activity.contactId);
-        const deal = activity.dealId ? getDealById(activity.dealId) : null;
+const contact = getContactById(activity.contact_id_c?.Id);
+        const deal = activity.deal_id_c ? getDealById(activity.deal_id_c.Id) : null;
         
         return (
-          activity.description?.toLowerCase().includes(term) ||
-          activity.type?.toLowerCase().includes(term) ||
-          (contact && `${contact.firstName} ${contact.lastName}`.toLowerCase().includes(term)) ||
-          (deal && deal.title?.toLowerCase().includes(term))
+          activity.description_c?.toLowerCase().includes(term) ||
+          activity.type_c?.toLowerCase().includes(term) ||
+          (contact && `${contact.first_name_c} ${contact.last_name_c}`.toLowerCase().includes(term)) ||
+          (deal && deal.title_c?.toLowerCase().includes(term))
         );
       });
     }
 
-    if (typeFilter !== "All") {
-      filtered = filtered.filter(activity => activity.type === typeFilter);
+if (typeFilter !== "All") {
+      filtered = filtered.filter(activity => activity.type_c === typeFilter);
     }
 
     // Sort by date descending (most recent first)
-    filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
+filtered.sort((a, b) => new Date(b.date_c) - new Date(a.date_c));
     
     setFilteredActivities(filtered);
   };
@@ -234,8 +234,8 @@ const Activities = () => {
               <div className="p-6">
                 <div className="space-y-4">
                   {filteredActivities.map(activity => {
-                    const contact = getContactById(activity.contactId);
-                    const deal = activity.dealId ? getDealById(activity.dealId) : null;
+const contact = getContactById(activity.contact_id_c?.Id);
+                    const deal = activity.deal_id_c ? getDealById(activity.deal_id_c.Id) : null;
                     
                     return (
                       <div key={activity.Id} className="relative group">
