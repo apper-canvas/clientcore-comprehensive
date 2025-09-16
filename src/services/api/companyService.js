@@ -14,24 +14,23 @@ class CompanyService {
   async getAll() {
     try {
       const params = {
-        fields: [
+fields: [
           {"field": {"Name": "Name"}},
-          {"field": {"Name": "industry_c"}},
-          {"field": {"Name": "website_c"}},
-          {"field": {"Name": "phone_c"}},
-          {"field": {"Name": "email_c"}},
+          {"field": {"Name": "Tags"}},
+          {"field": {"Name": "company_name_c"}},
           {"field": {"Name": "address_c"}},
           {"field": {"Name": "city_c"}},
           {"field": {"Name": "state_c"}},
           {"field": {"Name": "zip_code_c"}},
-          {"field": {"Name": "country_c"}},
-          {"field": {"Name": "employee_count_c"}},
+          {"field": {"Name": "website_c"}},
+          {"field": {"Name": "industry_c"}},
           {"field": {"Name": "annual_revenue_c"}},
-          {"field": {"Name": "status_c"}},
-          {"field": {"Name": "created_at_c"}},
-          {"field": {"Name": "tags_c"}}
+          {"field": {"Name": "number_of_employees_c"}},
+          {"field": {"Name": "description_c"}},
+          {"field": {"Name": "CreatedOn"}},
+          {"field": {"Name": "Owner"}}
         ],
-        orderBy: [{"fieldName": "created_at_c", "sorttype": "DESC"}],
+        orderBy: [{"fieldName": "CreatedDate", "sorttype": "DESC"}],
         pagingInfo: {"limit": 100, "offset": 0}
       };
       
@@ -54,21 +53,20 @@ class CompanyService {
     try {
       const params = {
         fields: [
-          {"field": {"Name": "Name"}},
-          {"field": {"Name": "industry_c"}},
-          {"field": {"Name": "website_c"}},
-          {"field": {"Name": "phone_c"}},
-          {"field": {"Name": "email_c"}},
+{"field": {"Name": "Name"}},
+          {"field": {"Name": "Tags"}},
+          {"field": {"Name": "company_name_c"}},
           {"field": {"Name": "address_c"}},
           {"field": {"Name": "city_c"}},
           {"field": {"Name": "state_c"}},
           {"field": {"Name": "zip_code_c"}},
-          {"field": {"Name": "country_c"}},
-          {"field": {"Name": "employee_count_c"}},
+          {"field": {"Name": "website_c"}},
+          {"field": {"Name": "industry_c"}},
           {"field": {"Name": "annual_revenue_c"}},
-          {"field": {"Name": "status_c"}},
-          {"field": {"Name": "created_at_c"}},
-          {"field": {"Name": "tags_c"}}
+          {"field": {"Name": "number_of_employees_c"}},
+          {"field": {"Name": "description_c"}},
+          {"field": {"Name": "CreatedOn"}},
+          {"field": {"Name": "Owner"}}
         ]
       };
       
@@ -89,22 +87,19 @@ class CompanyService {
     try {
       const params = {
         records: [
-          {
-            Name: companyData.Name,
-            industry_c: companyData.industry_c,
-            website_c: companyData.website_c,
-            phone_c: companyData.phone_c,
-            email_c: companyData.email_c,
-            address_c: companyData.address_c,
-            city_c: companyData.city_c,
-            state_c: companyData.state_c,
-            zip_code_c: companyData.zip_code_c,
-            country_c: companyData.country_c,
-            employee_count_c: parseInt(companyData.employee_count_c) || 0,
-            annual_revenue_c: parseFloat(companyData.annual_revenue_c) || 0,
-            status_c: companyData.status_c,
-            tags_c: companyData.tags_c || "",
-            created_at_c: new Date().toISOString()
+{
+Name: companyData.Name,
+            Tags: companyData.Tags || "",
+            company_name_c: companyData.company_name_c || "",
+            address_c: companyData.address_c || "",
+            city_c: companyData.city_c || "",
+            state_c: companyData.state_c || "",
+            zip_code_c: companyData.zip_code_c || "",
+            website_c: companyData.website_c || "",
+            industry_c: companyData.industry_c || "",
+            annual_revenue_c: companyData.annual_revenue_c ? parseInt(companyData.annual_revenue_c, 10) : null,
+            number_of_employees_c: companyData.number_of_employees_c ? parseInt(companyData.number_of_employees_c, 10) : null,
+            description_c: companyData.description_c || ""
           }
         ]
       };
@@ -142,20 +137,18 @@ class CompanyService {
         records: [
           {
             Id: id,
-            Name: companyData.Name,
-            industry_c: companyData.industry_c,
-            website_c: companyData.website_c,
-            phone_c: companyData.phone_c,
-            email_c: companyData.email_c,
-            address_c: companyData.address_c,
-            city_c: companyData.city_c,
-            state_c: companyData.state_c,
-            zip_code_c: companyData.zip_code_c,
-            country_c: companyData.country_c,
-            employee_count_c: parseInt(companyData.employee_count_c) || 0,
-            annual_revenue_c: parseFloat(companyData.annual_revenue_c) || 0,
-            status_c: companyData.status_c,
-            tags_c: companyData.tags_c || ""
+Name: companyData.Name,
+Tags: companyData.Tags || "",
+            company_name_c: companyData.company_name_c || "",
+            address_c: companyData.address_c || "",
+            city_c: companyData.city_c || "",
+            state_c: companyData.state_c || "",
+            zip_code_c: companyData.zip_code_c || "",
+            website_c: companyData.website_c || "",
+            industry_c: companyData.industry_c || "",
+            annual_revenue_c: companyData.annual_revenue_c ? parseInt(companyData.annual_revenue_c, 10) : null,
+            number_of_employees_c: companyData.number_of_employees_c ? parseInt(companyData.number_of_employees_c, 10) : null,
+            description_c: companyData.description_c || ""
           }
         ]
       };
