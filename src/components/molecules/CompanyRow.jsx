@@ -1,8 +1,7 @@
-import { format } from "date-fns";
-import React from "react";
-import ApperIcon from "@/components/ApperIcon";
-import StatusBadge from "@/components/molecules/StatusBadge";
 import Button from "@/components/atoms/Button";
+import StatusBadge from "@/components/molecules/StatusBadge";
+import ApperIcon from "@/components/ApperIcon";
+import { format } from "date-fns";
 
 const CompanyRow = ({ company, onEdit, onDelete }) => {
   const formatRevenue = (revenue) => {
@@ -34,33 +33,33 @@ const CompanyRow = ({ company, onEdit, onDelete }) => {
               {company.Name}
             </div>
             <div className="text-sm text-gray-500">
-{company.company_name_c || "No company name"}
+              {formatEmployeeCount(company.employee_count_c)} employees
             </div>
           </div>
         </div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
-<div className="text-sm text-primary">{company.Tags || "No tags"}</div>
+        <div className="text-sm text-primary">{company.industry_c || "N/A"}</div>
       </td>
-<td className="px-6 py-4 whitespace-nowrap">
+      <td className="px-6 py-4 whitespace-nowrap">
         <div className="text-sm text-primary">
-          {company.Phone && (
+          {company.phone_c && (
             <div className="flex items-center gap-1 mb-1">
               <ApperIcon name="Phone" size={14} className="text-gray-400" />
-              {company.Phone}
+              {company.phone_c}
             </div>
           )}
-          {company.Email && (
+          {company.email_c && (
             <div className="flex items-center gap-1 mb-1">
-              <ApperIcon name="MapPin" size={14} className="text-gray-400" />
-              {company.Email}
+              <ApperIcon name="Mail" size={14} className="text-gray-400" />
+              {company.email_c}
             </div>
           )}
-          {company.Website && (
+          {company.website_c && (
             <div className="flex items-center gap-1">
               <ApperIcon name="Globe" size={14} className="text-gray-400" />
               <a 
-                href={company.Website} 
+                href={company.website_c} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-accent hover:underline"
@@ -73,18 +72,18 @@ const CompanyRow = ({ company, onEdit, onDelete }) => {
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
         <div className="text-sm text-primary">
-{company.city_c && company.state_c ? (
+          {company.city_c && company.state_c ? (
             `${company.city_c}, ${company.state_c}`
           ) : (
             company.city_c || company.state_c || "N/A"
           )}
         </div>
         <div className="text-sm text-gray-500">
-{company.zip_code_c || "No zip code"}
+          {formatRevenue(company.annual_revenue_c)} revenue
         </div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
-<div className="text-xs text-gray-500">Active</div>
+        <StatusBadge status={company.status_c} />
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
         <div className="flex items-center gap-2">
