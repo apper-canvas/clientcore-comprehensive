@@ -12,6 +12,11 @@ Name: "",
     city_c: "",
     state_c: "",
     zip_code_c: "",
+    website_c: "",
+    industry_c: "",
+    annual_revenue_c: "",
+    number_of_employees_c: "",
+    description_c: "",
     Tags: ""
   });
 
@@ -26,6 +31,11 @@ Name: company.Name || "",
         city_c: company.city_c || "",
         state_c: company.state_c || "",
         zip_code_c: company.zip_code_c || "",
+        website_c: company.website_c || "",
+        industry_c: company.industry_c || "",
+        annual_revenue_c: company.annual_revenue_c || "",
+        number_of_employees_c: company.number_of_employees_c || "",
+        description_c: company.description_c || "",
         Tags: company.Tags || ""
       });
     }
@@ -42,12 +52,16 @@ if (!formData.company_name_c.trim()) {
       newErrors.company_name_c = "Company Name is required";
     }
     
-    if (formData.Email && !/\S+@\S+\.\S+/.test(formData.Email)) {
-      newErrors.Email = "Email is invalid";
+if (formData.website_c && !formData.website_c.startsWith('http')) {
+      newErrors.website_c = "Website must start with http:// or https://";
     }
     
-    if (formData.Website && !formData.Website.startsWith('http')) {
-      newErrors.Website = "Website must start with http:// or https://";
+    if (formData.annual_revenue_c && isNaN(formData.annual_revenue_c)) {
+      newErrors.annual_revenue_c = "Annual revenue must be a valid number";
+    }
+    
+    if (formData.number_of_employees_c && isNaN(formData.number_of_employees_c)) {
+      newErrors.number_of_employees_c = "Employee count must be a valid number";
     }
 
     setErrors(newErrors);
@@ -132,27 +146,42 @@ if (!formData.company_name_c.trim()) {
                 Website
               </label>
               <Input
-name="Tags"
-                value={formData.Tags}
+                name="website_c"
+                value={formData.website_c}
                 onChange={handleChange}
-                error={errors.Website}
+                error={errors.website_c}
                 placeholder="https://company.com"
               />
-              {errors.Website && (
-                <p className="text-error text-sm mt-1">{errors.Website}</p>
+              {errors.website_c && (
+                <p className="text-error text-sm mt-1">{errors.website_c}</p>
               )}
             </div>
 
-<div>
+            <div>
+              <label className="block text-sm font-medium text-primary mb-2">
+                Industry
+              </label>
+              <Input
+                name="industry_c"
+                value={formData.industry_c}
+                onChange={handleChange}
+                placeholder="e.g., Technology, Healthcare, Finance"
+              />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
               <label className="block text-sm font-medium text-primary mb-2">
                 Status
               </label>
               <select
-name="Tags"
+                name="Tags"
                 value={formData.Tags}
                 onChange={handleChange}
                 className="w-full px-4 py-3 rounded-md border-2 border-gray-200 bg-surface text-primary focus:border-accent focus:outline-none transition-colors duration-200"
               >
+                <option value="">Select Status</option>
                 <option value="Active">Active</option>
                 <option value="Prospect">Prospect</option>
                 <option value="Customer">Customer</option>
@@ -166,35 +195,17 @@ name="Tags"
         <div className="space-y-4">
           <h3 className="text-lg font-semibold text-primary">Contact Information</h3>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 <div>
-              <label className="block text-sm font-medium text-primary mb-2">
-                Phone
-              </label>
-              <Input
-name="address_c"
-                value={formData.address_c}
-                onChange={handleChange}
-                placeholder="Enter phone number"
-              />
-            </div>
-
-<div>
-              <label className="block text-sm font-medium text-primary mb-2">
-                Email
-              </label>
-              <Input
-                name="Email"
-name="city_c"
-                value={formData.city_c}
-                onChange={handleChange}
-                error={errors.Email}
-                placeholder="contact@company.com"
-              />
-              {errors.Email && (
-                <p className="text-error text-sm mt-1">{errors.Email}</p>
-              )}
-            </div>
+            <label className="block text-sm font-medium text-primary mb-2">
+              Description
+            </label>
+            <textarea
+              name="description_c"
+              value={formData.description_c}
+              onChange={handleChange}
+              className="w-full px-4 py-3 rounded-md border-2 border-gray-200 bg-surface text-primary focus:border-accent focus:outline-none transition-colors duration-200 min-h-[100px] resize-vertical"
+              placeholder="Brief description of the company..."
+            />
           </div>
         </div>
 
@@ -251,13 +262,13 @@ name="city_c"
               />
             </div>
 
-            <div>
-<label className="block text-sm font-medium text-primary mb-2">
+<div>
+              <label className="block text-sm font-medium text-primary mb-2">
                 Country
               </label>
               <Input
-name="state_c"
-                value={formData.state_c}
+                name="country_c"
+                value={formData.country_c || ""}
                 onChange={handleChange}
                 placeholder="Enter country"
               />
@@ -269,31 +280,39 @@ name="state_c"
         <div className="space-y-4">
           <h3 className="text-lg font-semibold text-primary">Company Details</h3>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-<div>
+<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
               <label className="block text-sm font-medium text-primary mb-2">
                 Employee Count
               </label>
               <Input
-name="zip_code_c"
-                value={formData.zip_code_c}
-                value={formData.EmployeeCount}
+                name="number_of_employees_c"
+                value={formData.number_of_employees_c}
                 onChange={handleChange}
+                error={errors.number_of_employees_c}
                 placeholder="Number of employees"
+                type="number"
               />
+              {errors.number_of_employees_c && (
+                <p className="text-error text-sm mt-1">{errors.number_of_employees_c}</p>
+              )}
             </div>
 
-<div>
+            <div>
               <label className="block text-sm font-medium text-primary mb-2">
-                Annual Revenue
+                Annual Revenue (USD)
               </label>
               <Input
-name="Tags"
-                value={formData.Tags}
-                value={formData.AnnualRevenue}
+                name="annual_revenue_c"
+                value={formData.annual_revenue_c}
                 onChange={handleChange}
+                error={errors.annual_revenue_c}
                 placeholder="Annual revenue in USD"
+                type="number"
               />
+              {errors.annual_revenue_c && (
+                <p className="text-error text-sm mt-1">{errors.annual_revenue_c}</p>
+              )}
             </div>
           </div>
 

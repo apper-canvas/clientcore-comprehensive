@@ -22,6 +22,11 @@ fields: [
           {"field": {"Name": "city_c"}},
           {"field": {"Name": "state_c"}},
           {"field": {"Name": "zip_code_c"}},
+          {"field": {"Name": "website_c"}},
+          {"field": {"Name": "industry_c"}},
+          {"field": {"Name": "annual_revenue_c"}},
+          {"field": {"Name": "number_of_employees_c"}},
+          {"field": {"Name": "description_c"}},
           {"field": {"Name": "CreatedOn"}},
           {"field": {"Name": "Owner"}}
         ],
@@ -55,6 +60,11 @@ fields: [
           {"field": {"Name": "city_c"}},
           {"field": {"Name": "state_c"}},
           {"field": {"Name": "zip_code_c"}},
+          {"field": {"Name": "website_c"}},
+          {"field": {"Name": "industry_c"}},
+          {"field": {"Name": "annual_revenue_c"}},
+          {"field": {"Name": "number_of_employees_c"}},
+          {"field": {"Name": "description_c"}},
           {"field": {"Name": "CreatedOn"}},
           {"field": {"Name": "Owner"}}
         ]
@@ -77,14 +87,19 @@ fields: [
     try {
       const params = {
         records: [
-          {
+{
 Name: companyData.Name,
             Tags: companyData.Tags || "",
             company_name_c: companyData.company_name_c || "",
             address_c: companyData.address_c || "",
             city_c: companyData.city_c || "",
             state_c: companyData.state_c || "",
-            zip_code_c: companyData.zip_code_c || ""
+            zip_code_c: companyData.zip_code_c || "",
+            website_c: companyData.website_c || "",
+            industry_c: companyData.industry_c || "",
+            annual_revenue_c: companyData.annual_revenue_c || null,
+            number_of_employees_c: companyData.number_of_employees_c || null,
+            description_c: companyData.description_c || ""
           }
         ]
       };
@@ -122,13 +137,18 @@ Name: companyData.Name,
         records: [
           {
             Id: id,
-            Name: companyData.Name,
+Name: companyData.Name,
 Tags: companyData.Tags || "",
             company_name_c: companyData.company_name_c || "",
             address_c: companyData.address_c || "",
             city_c: companyData.city_c || "",
             state_c: companyData.state_c || "",
-            zip_code_c: companyData.zip_code_c || ""
+            zip_code_c: companyData.zip_code_c || "",
+            website_c: companyData.website_c || "",
+            industry_c: companyData.industry_c || "",
+            annual_revenue_c: companyData.annual_revenue_c || null,
+            number_of_employees_c: companyData.number_of_employees_c || null,
+            description_c: companyData.description_c || ""
           }
         ]
       };
