@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import React, { useContext } from "react";
 import ApperIcon from "@/components/ApperIcon";
-import { AuthContext } from "@/contexts/AuthContext";
+import { AuthContext } from "@/App";
 
 const Sidebar = ({ isOpen, onClose }) => {
 const { logout } = useContext(AuthContext);

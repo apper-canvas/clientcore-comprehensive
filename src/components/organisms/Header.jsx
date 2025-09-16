@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import ApperIcon from "@/components/ApperIcon";
 import SearchBar from "@/components/molecules/SearchBar";
 import Button from "@/components/atoms/Button";
-import { AuthContext } from "@/contexts/AuthContext";
+import { AuthContext } from "@/App";
 
 const Header = ({ onMenuClick, title, subtitle, actions = [] }) => {
   const { logout } = useContext(AuthContext);
