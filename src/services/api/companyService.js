@@ -14,24 +14,24 @@ class CompanyService {
   async getAll() {
     try {
       const params = {
-        fields: [
+fields: [
           {"field": {"Name": "Name"}},
-          {"field": {"Name": "industry_c"}},
-          {"field": {"Name": "website_c"}},
-          {"field": {"Name": "phone_c"}},
-          {"field": {"Name": "email_c"}},
-          {"field": {"Name": "address_c"}},
-          {"field": {"Name": "city_c"}},
-          {"field": {"Name": "state_c"}},
-          {"field": {"Name": "zip_code_c"}},
-          {"field": {"Name": "country_c"}},
-          {"field": {"Name": "employee_count_c"}},
-          {"field": {"Name": "annual_revenue_c"}},
-          {"field": {"Name": "status_c"}},
-          {"field": {"Name": "created_at_c"}},
-          {"field": {"Name": "tags_c"}}
+          {"field": {"Name": "Industry"}},
+          {"field": {"Name": "Website"}},
+          {"field": {"Name": "Phone"}},
+          {"field": {"Name": "Email"}},
+          {"field": {"Name": "Address"}},
+          {"field": {"Name": "City"}},
+          {"field": {"Name": "State"}},
+          {"field": {"Name": "ZipCode"}},
+          {"field": {"Name": "Country"}},
+          {"field": {"Name": "EmployeeCount"}},
+          {"field": {"Name": "AnnualRevenue"}},
+          {"field": {"Name": "Status"}},
+          {"field": {"Name": "CreatedDate"}},
+          {"field": {"Name": "Tags"}}
         ],
-        orderBy: [{"fieldName": "created_at_c", "sorttype": "DESC"}],
+        orderBy: [{"fieldName": "CreatedDate", "sorttype": "DESC"}],
         pagingInfo: {"limit": 100, "offset": 0}
       };
       
@@ -54,21 +54,21 @@ class CompanyService {
     try {
       const params = {
         fields: [
-          {"field": {"Name": "Name"}},
-          {"field": {"Name": "industry_c"}},
-          {"field": {"Name": "website_c"}},
-          {"field": {"Name": "phone_c"}},
-          {"field": {"Name": "email_c"}},
-          {"field": {"Name": "address_c"}},
-          {"field": {"Name": "city_c"}},
-          {"field": {"Name": "state_c"}},
-          {"field": {"Name": "zip_code_c"}},
-          {"field": {"Name": "country_c"}},
-          {"field": {"Name": "employee_count_c"}},
-          {"field": {"Name": "annual_revenue_c"}},
-          {"field": {"Name": "status_c"}},
-          {"field": {"Name": "created_at_c"}},
-          {"field": {"Name": "tags_c"}}
+{"field": {"Name": "Name"}},
+          {"field": {"Name": "Industry"}},
+          {"field": {"Name": "Website"}},
+          {"field": {"Name": "Phone"}},
+          {"field": {"Name": "Email"}},
+          {"field": {"Name": "Address"}},
+          {"field": {"Name": "City"}},
+          {"field": {"Name": "State"}},
+          {"field": {"Name": "ZipCode"}},
+          {"field": {"Name": "Country"}},
+          {"field": {"Name": "EmployeeCount"}},
+          {"field": {"Name": "AnnualRevenue"}},
+          {"field": {"Name": "Status"}},
+          {"field": {"Name": "CreatedDate"}},
+          {"field": {"Name": "Tags"}}
         ]
       };
       
@@ -90,21 +90,21 @@ class CompanyService {
       const params = {
         records: [
           {
-            Name: companyData.Name,
-            industry_c: companyData.industry_c,
-            website_c: companyData.website_c,
-            phone_c: companyData.phone_c,
-            email_c: companyData.email_c,
-            address_c: companyData.address_c,
-            city_c: companyData.city_c,
-            state_c: companyData.state_c,
-            zip_code_c: companyData.zip_code_c,
-            country_c: companyData.country_c,
-            employee_count_c: parseInt(companyData.employee_count_c) || 0,
-            annual_revenue_c: parseFloat(companyData.annual_revenue_c) || 0,
-            status_c: companyData.status_c,
-            tags_c: companyData.tags_c || "",
-            created_at_c: new Date().toISOString()
+Name: companyData.Name,
+            Industry: companyData.Industry,
+            Website: companyData.Website,
+            Phone: companyData.Phone,
+            Email: companyData.Email,
+            Address: companyData.Address,
+            City: companyData.City,
+            State: companyData.State,
+            ZipCode: companyData.ZipCode,
+            Country: companyData.Country,
+            EmployeeCount: parseInt(companyData.EmployeeCount) || 0,
+            AnnualRevenue: parseFloat(companyData.AnnualRevenue) || 0,
+            Status: companyData.Status,
+            Tags: companyData.Tags || "",
+            CreatedDate: new Date().toISOString()
           }
         ]
       };
@@ -143,19 +143,19 @@ class CompanyService {
           {
             Id: id,
             Name: companyData.Name,
-            industry_c: companyData.industry_c,
-            website_c: companyData.website_c,
-            phone_c: companyData.phone_c,
-            email_c: companyData.email_c,
-            address_c: companyData.address_c,
-            city_c: companyData.city_c,
-            state_c: companyData.state_c,
-            zip_code_c: companyData.zip_code_c,
-            country_c: companyData.country_c,
-            employee_count_c: parseInt(companyData.employee_count_c) || 0,
-            annual_revenue_c: parseFloat(companyData.annual_revenue_c) || 0,
-            status_c: companyData.status_c,
-            tags_c: companyData.tags_c || ""
+Industry: companyData.Industry,
+            Website: companyData.Website,
+            Phone: companyData.Phone,
+            Email: companyData.Email,
+            Address: companyData.Address,
+            City: companyData.City,
+            State: companyData.State,
+            ZipCode: companyData.ZipCode,
+            Country: companyData.Country,
+            EmployeeCount: parseInt(companyData.EmployeeCount) || 0,
+            AnnualRevenue: parseFloat(companyData.AnnualRevenue) || 0,
+            Status: companyData.Status,
+            Tags: companyData.Tags || ""
           }
         ]
       };

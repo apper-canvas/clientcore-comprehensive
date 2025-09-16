@@ -33,33 +33,33 @@ const CompanyRow = ({ company, onEdit, onDelete }) => {
               {company.Name}
             </div>
             <div className="text-sm text-gray-500">
-              {formatEmployeeCount(company.employee_count_c)} employees
+{formatEmployeeCount(company.EmployeeCount)} employees
             </div>
           </div>
         </div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
-        <div className="text-sm text-primary">{company.industry_c || "N/A"}</div>
+<div className="text-sm text-primary">{company.Industry || "N/A"}</div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
         <div className="text-sm text-primary">
-          {company.phone_c && (
+{company.Phone && (
             <div className="flex items-center gap-1 mb-1">
               <ApperIcon name="Phone" size={14} className="text-gray-400" />
-              {company.phone_c}
+              {company.Phone}
             </div>
           )}
-          {company.email_c && (
+          {company.Email && (
             <div className="flex items-center gap-1 mb-1">
               <ApperIcon name="Mail" size={14} className="text-gray-400" />
-              {company.email_c}
+              {company.Email}
             </div>
           )}
-          {company.website_c && (
+{company.Website && (
             <div className="flex items-center gap-1">
               <ApperIcon name="Globe" size={14} className="text-gray-400" />
               <a 
-                href={company.website_c} 
+                href={company.Website} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-accent hover:underline"
@@ -72,18 +72,18 @@ const CompanyRow = ({ company, onEdit, onDelete }) => {
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
         <div className="text-sm text-primary">
-          {company.city_c && company.state_c ? (
-            `${company.city_c}, ${company.state_c}`
+{company.City && company.State ? (
+            `${company.City}, ${company.State}`
           ) : (
-            company.city_c || company.state_c || "N/A"
+            company.City || company.State || "N/A"
           )}
         </div>
         <div className="text-sm text-gray-500">
-          {formatRevenue(company.annual_revenue_c)} revenue
+          {formatRevenue(company.AnnualRevenue)} revenue
         </div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
-        <StatusBadge status={company.status_c} />
+<StatusBadge status={company.Status} />
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
         <div className="flex items-center gap-2">

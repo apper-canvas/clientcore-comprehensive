@@ -5,42 +5,42 @@ import Card from "@/components/atoms/Card";
 import ApperIcon from "@/components/ApperIcon";
 
 const CompanyForm = ({ company, onSubmit, onCancel, isSubmitting = false }) => {
-  const [formData, setFormData] = useState({
+const [formData, setFormData] = useState({
     Name: "",
-    industry_c: "",
-    website_c: "",
-    phone_c: "",
-    email_c: "",
-    address_c: "",
-    city_c: "",
-    state_c: "",
-    zip_code_c: "",
-    country_c: "",
-    employee_count_c: "",
-    annual_revenue_c: "",
-    status_c: "Active",
-    tags_c: ""
+    Industry: "",
+    Website: "",
+    Phone: "",
+    Email: "",
+    Address: "",
+    City: "",
+    State: "",
+    ZipCode: "",
+    Country: "",
+    EmployeeCount: "",
+    AnnualRevenue: "",
+    Status: "Active",
+    Tags: ""
   });
 
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
     if (company) {
-      setFormData({
+setFormData({
         Name: company.Name || "",
-        industry_c: company.industry_c || "",
-        website_c: company.website_c || "",
-        phone_c: company.phone_c || "",
-        email_c: company.email_c || "",
-        address_c: company.address_c || "",
-        city_c: company.city_c || "",
-        state_c: company.state_c || "",
-        zip_code_c: company.zip_code_c || "",
-        country_c: company.country_c || "",
-        employee_count_c: company.employee_count_c || "",
-        annual_revenue_c: company.annual_revenue_c || "",
-        status_c: company.status_c || "Active",
-        tags_c: company.tags_c || ""
+        Industry: company.Industry || "",
+        Website: company.Website || "",
+        Phone: company.Phone || "",
+        Email: company.Email || "",
+        Address: company.Address || "",
+        City: company.City || "",
+        State: company.State || "",
+        ZipCode: company.ZipCode || "",
+        Country: company.Country || "",
+        EmployeeCount: company.EmployeeCount || "",
+        AnnualRevenue: company.AnnualRevenue || "",
+        Status: company.Status || "Active",
+        Tags: company.Tags || ""
       });
     }
   }, [company]);
@@ -52,16 +52,16 @@ const CompanyForm = ({ company, onSubmit, onCancel, isSubmitting = false }) => {
       newErrors.Name = "Company name is required";
     }
     
-    if (!formData.industry_c.trim()) {
-      newErrors.industry_c = "Industry is required";
+if (!formData.Industry.trim()) {
+      newErrors.Industry = "Industry is required";
     }
     
-    if (formData.email_c && !/\S+@\S+\.\S+/.test(formData.email_c)) {
-      newErrors.email_c = "Email is invalid";
+    if (formData.Email && !/\S+@\S+\.\S+/.test(formData.Email)) {
+      newErrors.Email = "Email is invalid";
     }
     
-    if (formData.website_c && !formData.website_c.startsWith('http')) {
-      newErrors.website_c = "Website must start with http:// or https://";
+    if (formData.Website && !formData.Website.startsWith('http')) {
+      newErrors.Website = "Website must start with http:// or https://";
     }
 
     setErrors(newErrors);
@@ -123,47 +123,47 @@ const CompanyForm = ({ company, onSubmit, onCancel, isSubmitting = false }) => {
               )}
             </div>
 
-            <div>
+<div>
               <label className="block text-sm font-medium text-primary mb-2">
                 Industry *
               </label>
               <Input
-                name="industry_c"
-                value={formData.industry_c}
+                name="Industry"
+                value={formData.Industry}
                 onChange={handleChange}
-                error={errors.industry_c}
+                error={errors.Industry}
                 placeholder="e.g., Technology, Healthcare"
               />
-              {errors.industry_c && (
-                <p className="text-error text-sm mt-1">{errors.industry_c}</p>
+              {errors.Industry && (
+                <p className="text-error text-sm mt-1">{errors.Industry}</p>
               )}
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-medium text-primary mb-2">
                 Website
               </label>
               <Input
-                name="website_c"
-                value={formData.website_c}
+                name="Website"
+                value={formData.Website}
                 onChange={handleChange}
-                error={errors.website_c}
+                error={errors.Website}
                 placeholder="https://company.com"
               />
-              {errors.website_c && (
-                <p className="text-error text-sm mt-1">{errors.website_c}</p>
+              {errors.Website && (
+                <p className="text-error text-sm mt-1">{errors.Website}</p>
               )}
             </div>
 
-            <div>
+<div>
               <label className="block text-sm font-medium text-primary mb-2">
                 Status
               </label>
               <select
-                name="status_c"
-                value={formData.status_c}
+                name="Status"
+                value={formData.Status}
                 onChange={handleChange}
                 className="w-full px-4 py-3 rounded-md border-2 border-gray-200 bg-surface text-primary focus:border-accent focus:outline-none transition-colors duration-200"
               >
@@ -181,32 +181,32 @@ const CompanyForm = ({ company, onSubmit, onCancel, isSubmitting = false }) => {
           <h3 className="text-lg font-semibold text-primary">Contact Information</h3>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
+<div>
               <label className="block text-sm font-medium text-primary mb-2">
                 Phone
               </label>
               <Input
-                name="phone_c"
-                value={formData.phone_c}
+                name="Phone"
+                value={formData.Phone}
                 onChange={handleChange}
                 placeholder="Enter phone number"
               />
             </div>
 
-            <div>
+<div>
               <label className="block text-sm font-medium text-primary mb-2">
                 Email
               </label>
               <Input
-                name="email_c"
+                name="Email"
                 type="email"
-                value={formData.email_c}
+                value={formData.Email}
                 onChange={handleChange}
-                error={errors.email_c}
+                error={errors.Email}
                 placeholder="contact@company.com"
               />
-              {errors.email_c && (
-                <p className="text-error text-sm mt-1">{errors.email_c}</p>
+              {errors.Email && (
+                <p className="text-error text-sm mt-1">{errors.Email}</p>
               )}
             </div>
           </div>
@@ -266,12 +266,12 @@ const CompanyForm = ({ company, onSubmit, onCancel, isSubmitting = false }) => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-primary mb-2">
+<label className="block text-sm font-medium text-primary mb-2">
                 Country
               </label>
               <Input
-                name="country_c"
-                value={formData.country_c}
+                name="Country"
+                value={formData.Country}
                 onChange={handleChange}
                 placeholder="Enter country"
               />
@@ -284,40 +284,40 @@ const CompanyForm = ({ company, onSubmit, onCancel, isSubmitting = false }) => {
           <h3 className="text-lg font-semibold text-primary">Company Details</h3>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
+<div>
               <label className="block text-sm font-medium text-primary mb-2">
                 Employee Count
               </label>
               <Input
-                name="employee_count_c"
+                name="EmployeeCount"
                 type="number"
-                value={formData.employee_count_c}
+                value={formData.EmployeeCount}
                 onChange={handleChange}
                 placeholder="Number of employees"
               />
             </div>
 
-            <div>
+<div>
               <label className="block text-sm font-medium text-primary mb-2">
                 Annual Revenue
               </label>
               <Input
-                name="annual_revenue_c"
+                name="AnnualRevenue"
                 type="number"
-                value={formData.annual_revenue_c}
+                value={formData.AnnualRevenue}
                 onChange={handleChange}
                 placeholder="Annual revenue in USD"
               />
             </div>
           </div>
 
-          <div>
+<div>
             <label className="block text-sm font-medium text-primary mb-2">
               Tags
             </label>
             <Input
-              name="tags_c"
-              value={formData.tags_c}
+              name="Tags"
+              value={formData.Tags}
               onChange={handleChange}
               placeholder="Enter tags separated by commas"
             />
