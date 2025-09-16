@@ -144,7 +144,8 @@ const Companies = () => {
       />
       
       <div className="p-6">
-<Modal
+(
+        <Modal
           isOpen={showForm}
           onClose={handleCancelForm}
         >
