@@ -9,10 +9,10 @@ import SearchBar from "@/components/molecules/SearchBar";
 import CompanyRow from "@/components/molecules/CompanyRow";
 import Button from "@/components/atoms/Button";
 import Card from "@/components/atoms/Card";
+import Modal from "@/components/atoms/Modal";
 import Empty from "@/components/ui/Empty";
 import Loading from "@/components/ui/Loading";
 import Error from "@/components/ui/Error";
-
 const Companies = () => {
   const { onMenuClick } = useOutletContext();
   
@@ -144,15 +144,17 @@ const Companies = () => {
       />
       
       <div className="p-6">
-        {showForm ? (
-          <div className="mb-8">
-            <CompanyForm
-              company={editingCompany}
-              onSubmit={handleSubmitCompany}
-              onCancel={handleCancelForm}
-              isSubmitting={isSubmitting}
-            />
-          </div>
+<Modal
+          isOpen={showForm}
+          onClose={handleCancelForm}
+        >
+          <CompanyForm
+            company={editingCompany}
+            onSubmit={handleSubmitCompany}
+            onCancel={handleCancelForm}
+            isSubmitting={isSubmitting}
+          />
+        </Modal>
         ) : (
           <Card className="bg-gradient-to-br from-surface to-gray-50">
             {/* Filters */}
