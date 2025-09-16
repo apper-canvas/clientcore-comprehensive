@@ -1,12 +1,12 @@
-import { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import ApperIcon from "@/components/ApperIcon";
 import Button from "@/components/atoms/Button";
 import Input from "@/components/atoms/Input";
 import Card from "@/components/atoms/Card";
-import ApperIcon from "@/components/ApperIcon";
 
 const CompanyForm = ({ company, onSubmit, onCancel, isSubmitting = false }) => {
 const [formData, setFormData] = useState({
-Name: "",
+    Name: "",
     company_name_c: "",
     address_c: "",
     city_c: "",
@@ -20,7 +20,7 @@ Name: "",
   useEffect(() => {
     if (company) {
 setFormData({
-Name: company.Name || "",
+        Name: company.Name || "",
         company_name_c: company.company_name_c || "",
         address_c: company.address_c || "",
         city_c: company.city_c || "",
@@ -34,20 +34,12 @@ Name: company.Name || "",
   const validateForm = () => {
     const newErrors = {};
     
-    if (!formData.Name.trim()) {
+if (!formData.Name.trim()) {
       newErrors.Name = "Company name is required";
     }
     
-if (!formData.company_name_c.trim()) {
+    if (!formData.company_name_c.trim()) {
       newErrors.company_name_c = "Company Name is required";
-    }
-    
-    if (formData.Email && !/\S+@\S+\.\S+/.test(formData.Email)) {
-      newErrors.Email = "Email is invalid";
-    }
-    
-    if (formData.Website && !formData.Website.startsWith('http')) {
-      newErrors.Website = "Website must start with http:// or https://";
     }
 
     setErrors(newErrors);
@@ -110,15 +102,15 @@ if (!formData.company_name_c.trim()) {
             </div>
 
 <div>
-<label className="block text-sm font-medium text-primary mb-2">
-                Company Name *
+              <label className="block text-sm font-medium text-primary mb-2">
+                Company Display Name
               </label>
               <Input
                 name="company_name_c"
                 value={formData.company_name_c}
                 onChange={handleChange}
                 error={errors.company_name_c}
-                placeholder="Enter company name"
+                placeholder="Enter display name"
               />
               {errors.company_name_c && (
                 <p className="text-error text-sm mt-1">{errors.company_name_c}</p>
@@ -126,76 +118,17 @@ if (!formData.company_name_c.trim()) {
             </div>
           </div>
 
-<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-primary mb-2">
-                Website
-              </label>
-              <Input
-name="Tags"
-                value={formData.Tags}
-                onChange={handleChange}
-                error={errors.Website}
-                placeholder="https://company.com"
-              />
-              {errors.Website && (
-                <p className="text-error text-sm mt-1">{errors.Website}</p>
-              )}
-            </div>
-
 <div>
-              <label className="block text-sm font-medium text-primary mb-2">
-                Status
-              </label>
-              <select
-name="Tags"
-                value={formData.Tags}
-                onChange={handleChange}
-                className="w-full px-4 py-3 rounded-md border-2 border-gray-200 bg-surface text-primary focus:border-accent focus:outline-none transition-colors duration-200"
-              >
-                <option value="Active">Active</option>
-                <option value="Prospect">Prospect</option>
-                <option value="Customer">Customer</option>
-                <option value="Inactive">Inactive</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
-        {/* Contact Information */}
-        <div className="space-y-4">
-          <h3 className="text-lg font-semibold text-primary">Contact Information</h3>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-<div>
-              <label className="block text-sm font-medium text-primary mb-2">
-                Phone
-              </label>
-              <Input
-name="address_c"
-                value={formData.address_c}
-                onChange={handleChange}
-                placeholder="Enter phone number"
-              />
-            </div>
-
-<div>
-              <label className="block text-sm font-medium text-primary mb-2">
-                Email
-              </label>
-              <Input
-                name="Email"
-name="city_c"
-                value={formData.city_c}
-                onChange={handleChange}
-                error={errors.Email}
-                placeholder="contact@company.com"
-              />
-              {errors.Email && (
-                <p className="text-error text-sm mt-1">{errors.Email}</p>
-              )}
-            </div>
-          </div>
+            <label className="block text-sm font-medium text-primary mb-2">
+              Tags
+            </label>
+            <Input
+              name="Tags"
+              value={formData.Tags}
+              onChange={handleChange}
+              placeholder="Enter tags separated by commas"
+            />
+</div>
         </div>
 
         {/* Address Information */}
@@ -251,64 +184,9 @@ name="city_c"
               />
             </div>
 
-            <div>
-<label className="block text-sm font-medium text-primary mb-2">
-                Country
-              </label>
-              <Input
-name="state_c"
-                value={formData.state_c}
-                onChange={handleChange}
-                placeholder="Enter country"
-              />
-            </div>
-          </div>
+</div>
         </div>
 
-        {/* Company Details */}
-        <div className="space-y-4">
-          <h3 className="text-lg font-semibold text-primary">Company Details</h3>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-<div>
-              <label className="block text-sm font-medium text-primary mb-2">
-                Employee Count
-              </label>
-              <Input
-name="zip_code_c"
-                value={formData.zip_code_c}
-                value={formData.EmployeeCount}
-                onChange={handleChange}
-                placeholder="Number of employees"
-              />
-            </div>
-
-<div>
-              <label className="block text-sm font-medium text-primary mb-2">
-                Annual Revenue
-              </label>
-              <Input
-name="Tags"
-                value={formData.Tags}
-                value={formData.AnnualRevenue}
-                onChange={handleChange}
-                placeholder="Annual revenue in USD"
-              />
-            </div>
-          </div>
-
-<div>
-            <label className="block text-sm font-medium text-primary mb-2">
-              Tags
-            </label>
-            <Input
-              name="Tags"
-              value={formData.Tags}
-              onChange={handleChange}
-              placeholder="Enter tags separated by commas"
-            />
-          </div>
-        </div>
 
         <div className="flex justify-end gap-3 pt-4">
           <Button

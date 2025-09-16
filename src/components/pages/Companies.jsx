@@ -54,16 +54,14 @@ const Companies = () => {
     if (searchTerm) {
       const term = searchTerm.toLowerCase();
       filtered = filtered.filter(company =>
-        company.Name?.toLowerCase().includes(term) ||
-        company.industry_c?.toLowerCase().includes(term) ||
-        company.email_c?.toLowerCase().includes(term) ||
-        company.website_c?.toLowerCase().includes(term)
+company.Name?.toLowerCase().includes(term) ||
+        company.company_name_c?.toLowerCase().includes(term) ||
+        company.address_c?.toLowerCase().includes(term) ||
+        company.Tags?.toLowerCase().includes(term)
       );
     }
 
-    if (statusFilter !== "All") {
-      filtered = filtered.filter(company => company.status_c === statusFilter);
-    }
+// Status filtering removed as status_c field doesn't exist in database
 
     setFilteredCompanies(filtered);
   };
@@ -209,11 +207,11 @@ const Companies = () => {
                 <table className="min-w-full">
                   <thead className="bg-gray-100 border-b border-gray-200">
                     <tr>
-                      <th className="px-6 py-4 text-left text-sm font-semibold text-primary">Company</th>
-                      <th className="px-6 py-4 text-left text-sm font-semibold text-primary">Industry</th>
-                      <th className="px-6 py-4 text-left text-sm font-semibold text-primary">Contact</th>
+<th className="px-6 py-4 text-left text-sm font-semibold text-primary">Company</th>
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-primary">Display Name</th>
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-primary">Address</th>
                       <th className="px-6 py-4 text-left text-sm font-semibold text-primary">Location</th>
-                      <th className="px-6 py-4 text-left text-sm font-semibold text-primary">Status</th>
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-primary">Tags</th>
                       <th className="px-6 py-4 text-right text-sm font-semibold text-primary">Actions</th>
                     </tr>
                   </thead>
