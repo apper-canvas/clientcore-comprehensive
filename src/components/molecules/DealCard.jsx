@@ -66,7 +66,6 @@ const DealCard = ({ deal, contact, onEdit, onDelete, draggable = true }) => {
           </div>
         )}
           <p className="text-sm text-gray-600 line-clamp-2">{deal.notes}</p>
-        )}
       </div>
     </Card>
   );
