@@ -97,8 +97,8 @@ Name: companyData.Name,
             zip_code_c: companyData.zip_code_c || "",
             website_c: companyData.website_c || "",
             industry_c: companyData.industry_c || "",
-            annual_revenue_c: companyData.annual_revenue_c || null,
-            number_of_employees_c: companyData.number_of_employees_c || null,
+            annual_revenue_c: companyData.annual_revenue_c ? parseInt(companyData.annual_revenue_c, 10) : null,
+            number_of_employees_c: companyData.number_of_employees_c ? parseInt(companyData.number_of_employees_c, 10) : null,
             description_c: companyData.description_c || ""
           }
         ]
@@ -146,8 +146,8 @@ Tags: companyData.Tags || "",
             zip_code_c: companyData.zip_code_c || "",
             website_c: companyData.website_c || "",
             industry_c: companyData.industry_c || "",
-            annual_revenue_c: companyData.annual_revenue_c || null,
-            number_of_employees_c: companyData.number_of_employees_c || null,
+            annual_revenue_c: companyData.annual_revenue_c ? parseInt(companyData.annual_revenue_c, 10) : null,
+            number_of_employees_c: companyData.number_of_employees_c ? parseInt(companyData.number_of_employees_c, 10) : null,
             description_c: companyData.description_c || ""
           }
         ]
